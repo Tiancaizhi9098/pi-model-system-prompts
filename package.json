@@ -1,0 +1,64 @@
+{
+  "name": "pi-model-system-prompts",
+  "version": "1.2.0",
+  "description": "Pi and OMP extensions with per-model pasted system prompts, always or once per session.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiancaizhi9098/pi-model-system-prompts.git"
+  },
+  "homepage": "https://github.com/Tiancaizhi9098/pi-model-system-prompts#readme",
+  "bugs": {
+    "url": "https://github.com/Tiancaizhi9098/pi-model-system-prompts/issues"
+  },
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "system-prompt"
+  ],
+  "files": [
+    "src",
+    "example-config.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=1.5.0",
+    "@oh-my-pi/pi-coding-agent": ">=18.15.0"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "1.5.0",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0",
+    "@oh-my-pi/pi-coding-agent": "18.15.0",
+    "@types/bun": "1.4.4"
+  },
+  "scripts": {
+    "test": "npm run test:pi && npm run test:omp",
+    "typecheck": "tsc --noEmit",
+    "test:pi": "node --test tests/*.test.ts",
+    "test:omp": "bun test --preload ./tests/omp/preload.ts ./tests/omp"
+  },
+  "omp": {
+    "extensions": [
+      "./src/omp.ts"
+    ]
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@oh-my-pi/pi-coding-agent": {
+      "optional": true
+    }
+  }
+}
